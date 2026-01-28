@@ -1,0 +1,156 @@
+/*
+    README-STYLE COMMENT BLOCK
+    --------------------------
+    Design Decisions for Seven24 Portfolio Redesign
+
+    1. Typography & Readability:
+       - Font Choice: 'Inter' is used for both headings and body text. It's a modern, neutral sans-serif that excels at screen readability, aligning with the "clean data" aesthetic. 'Poppins' is included as a backup for bolder headings if needed.
+       - Font Sizing: A responsive and accessible type scale is established. The base body font size is increased to 1.1rem for better legibility on larger screens. Headings use Bootstrap's responsive font sizes (`display-*` classes) for impact.
+
+    2. Color & Trust:
+       - Palette: The palette strictly uses the provided brand colors, mapping them to Bootstrap's theme colors for consistency. The dominant use of white and light gray (`#fdfdfe`, `.bg-light`) creates a bright, clean, and spacious feel.
+       - Accent Usage: The primary blue (`#0d6efd`) is used for key CTAs and icons to guide the user's eye. The accent green (`#198754`) is used sparingly for success indicators (e.g., checkmarks) to build a sense of positive reinforcement and trust.
+
+    3. Layout & Structure (The "Data Viz" Feel):
+       - Grid System: The design relies heavily on Bootstrap's robust grid system to create an ordered, structured, and predictable layout, which subtly mimics the organization of data in a spreadsheet or dashboard.
+       - Cards: Services and Portfolio items are presented in cards (`.card`). This modular format is easy to scan and scales perfectly on all devices. The `card-lift` effect adds a layer of modern interactivity.
+
+    4. UI/UX & Interactivity:
+       - Hero Section: Designed for maximum impact and a clear value proposition. The large, authoritative headline and direct CTAs immediately orient the user. The subtle gradient background adds depth without being distracting.
+       - Navigation: The top navigation is clean and sticky for easy access. The active link has a custom underline, a subtle but clear indicator of the user's current location.
+       - Hover Effects: The `.card-lift` class provides a gentle shadow and upward transform on hover. This "lifting" effect gives tactile feedback to the user, making the interface feel more responsive and engaging.
+*/
+
+/* 1. Global Styles & Typography */
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+    line-height: 1.6;
+    color: #212529; /* Neutral dark */
+    background-color: #fdfdfe; /* Very light gray/white background */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 700;
+    color: #212529;
+}
+
+.display-3 {
+    font-size: 3.5rem;
+}
+
+.display-5 {
+    font-size: 2.5rem;
+}
+
+.lead {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p, .btn, .nav-link {
+    font-family: 'Inter', sans-serif;
+}
+
+p {
+     font-size: 1.1rem;
+}
+
+
+/* 2. Navigation */
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -1px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #6c757d; /* Muted text */
+    position: relative;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #0d6efd; /* Primary blue */
+}
+
+.nav-link.active {
+    font-weight: 600;
+    color: #212529 !important; /* Neutral dark */
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 3px;
+    background-color: #0d6efd; /* Primary blue */
+    border-radius: 2px;
+}
+
+
+/* 3. Hero Section */
+.hero-section {
+    background-color: #f8f9fa; /* Neutral light */
+    background-image: linear-gradient(135deg, #fdfdfe 0%, #f8f9fa 100%);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.hero-section .lead {
+    color: #6c757d; /* Muted text */
+}
+
+/* 4. Card Styles & Hover Effects */
+.card {
+    border: 1px solid #e9ecef; /* Lighter border */
+    border-radius: 0.75rem; /* Softer corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+    color: #212529;
+}
+
+.card-body .fa-check-circle {
+    position: relative;
+    top: 2px;
+}
+
+/* 5. Accordion (FAQ) */
+.accordion-item {
+    border-radius: 0.5rem !important;
+    margin-bottom: 1rem;
+    border: 1px solid #e9ecef;
+    box-shadow: none;
+}
+
+.accordion-button {
+    font-weight: 600;
+    color: #212529;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    box-shadow: none;
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+/* 6. Footer */
+footer a:hover {
+    color: #f8f9fa !important;
+    text-decoration: underline;
+}
