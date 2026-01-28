@@ -1,244 +1,225 @@
-Seven24 – CLAUDE.md
-Project Summary
-Seven24 is a professional portfolio and lead-generation static website for a Kenya-based freelance Statistics Expert and Data & AI Consultant (X: @Datadetective10). The site targets SMEs, startups, researchers, and e-commerce businesses worldwide who need data cleaning, business intelligence dashboards, statistical modeling, predictive analytics, and workflow automation.
+# Seven24 – CLAUDE.md
 
-Core positioning: "Academic rigor meets business speed" — emphasizing statistically sound, mathematically validated work over black-box AI hype.
+## 1. Project Overview & Goals
 
-Key authority phrase: Always refer to solutions as "Statistics Expert-powered" to reinforce credibility.
+**Seven24** is a professional portfolio and lead-generation static website for a Kenya-based freelance Statistics Expert and Data & AI Consultant (X: @Datadetective10). The site targets SMEs, startups, researchers, and e-commerce businesses worldwide who need data cleaning, business intelligence dashboards, statistical modeling, predictive analytics, and workflow automation.
 
-Tagline: "Data, Analytics & AI for Better Business Decisions"
+**Core positioning:** "Academic rigor meets business speed" — emphasizing statistically sound, mathematically validated work over black-box AI hype.
 
-Ideal client statement (use frequently): "I help small businesses, startups, and researchers turn data into decisions using applied statistics, analytics, and machine learning."
+**Key authority phrase:** Always refer to solutions as "Statistics Expert-powered" to reinforce credibility.
 
-Goals & Success Criteria
-MVP Success Metrics:
+**Tagline:** "Data, Analytics & AI for Better Business Decisions"
 
-Fully responsive, accessible static site deployed on Netlify
-5 service pages clearly describing offerings
-3 live Streamlit demo apps integrated and accessible
-Working Netlify contact form
-Professional, trust-building brand voice throughout
-Zero console errors, mobile-first design, fast load times
-Long-term (post-MVP):
+**Ideal client statement (use frequently):** "I help small businesses, startups, and researchers turn data into decisions using applied statistics, analytics, and machine learning."
 
-Generate 3–5 qualified leads per month
-Establish authority in global data/analytics freelance market
-Demonstrate technical capability through interactive demos
-Brand Voice & Tone Guidelines
-Voice characteristics:
+**Success metrics:**
+- MVP deployed with all 6 pages, 5 service descriptions, 3 live Streamlit demos
+- Working Netlify contact form + Calendly integration
+- Professional, trust-building brand voice throughout
+- Zero console errors, mobile-first design, fast load times
+- Long-term: Generate 3–5 qualified leads per month
 
-Professional – no slang, casual abbreviations, or overly technical jargon
-Confident – authoritative without arrogance; you are the expert
-Approachable – warm, human, benefit-focused; no corporate coldness
-Trust-building – emphasize transparency, accuracy, validation, peer-reviewed methods
-No hype – avoid buzzwords like "cutting-edge AI" or "revolutionary"; prefer "proven," "validated," "rigorous"
-Writing rules:
+---
 
-Use second-person "you" when addressing potential clients
-Lead with benefits, not features ("increase revenue by 15%" > "build predictive models")
-Always tie services back to business outcomes: better decisions, cost savings, growth, efficiency
-Avoid passive voice where possible
-Use short paragraphs (2–4 sentences max) for scannability
-Visual Design & UI Rules
-Color Palette:
+## 2. Brand Voice, Tone & Key Phrases
 
-Primary Blue: #007BFF
-Hover Blue: #0d6efd
-Success Green: #198754 (CTAs, accents)
-Light Backgrounds: #F8F9FA, white (#FFFFFF)
-Text: Dark gray/black for body, blue for links
-Typography:
+**Voice characteristics:**
+- **Professional** – no slang, casual abbreviations, or overly technical jargon
+- **Confident** – authoritative without arrogance; you are the expert
+- **Approachable** – warm, human, benefit-focused; no corporate coldness
+- **Trust-building** – emphasize transparency, accuracy, validation, peer-reviewed methods
 
-Primary: Roboto (Google Fonts)
-Secondary: Open Sans
-Headings: bold, generous line-height
-Body: 16px base, 1.6 line-height
-Component Style:
+**Forbidden phrases:**
+- "BSc in Statistics" or any degree-specific credentials
+- "AI-powered" (use "Statistics Expert-powered" instead)
+- Hype language like "revolutionary", "game-changing", "cutting-edge"
 
-Bootstrap 5 utility classes preferred
-Rounded corners: border-radius: 8px for cards
-Shadows: subtle (box-shadow: 0 2px 8px rgba(0,0,0,0.1))
-Buttons: solid green (#198754) with white text, hover darkens slightly
-Icons: Font Awesome (CDN), use sparingly
-Responsiveness:
+**Preferred phrases:**
+- "Academic rigor meets business speed"
+- "Statistics Expert-powered solutions"
+- "Turn data into decisions"
+- "Validated, peer-reviewed methods"
+- "No jargon – I explain results in plain language"
 
-Mobile-first breakpoints (Bootstrap defaults)
-Test on 375px (mobile), 768px (tablet), 1200px (desktop)
-Navbar collapses to hamburger on mobile
-Cards stack vertically on small screens
-Technology & Architecture Decisions
-Strict Tech Stack (do NOT deviate):
+---
 
-HTML5 – semantic, accessible markup
-CSS – Bootstrap 5 via CDN + /css/custom.css for overrides
-JavaScript – minimal custom JS in /js/custom.js (navbar, smooth scroll only)
-Icons – Font Awesome (CDN)
-Fonts – Google Fonts (Roboto, Open Sans)
-Hosting – Netlify (free tier), static deployment
-Forms – Netlify Forms (data-netlify="true")
-Demos – 3 separate Streamlit apps on Streamlit Community Cloud
-Prohibited technologies (unless I explicitly request):
+## 3. Visual & Design Guidelines
 
-No React, Vue, Svelte, Angular
-No Tailwind, Sass, PostCSS, build tools
-No backend, databases, server-side rendering
-No paid services, premium plugins, or third-party analytics at MVP stage
-Why this stack:
+**Colors:**
+- Primary Blue: `#007BFF`
+- Hover Blue: `#0d6efd`
+- Success Green: `#198754` (CTAs, accents)
+- Light Background: `#F8F9FA`
+- White: `#FFFFFF`
 
-Zero build complexity
-Free hosting forever
-Lightning-fast load times
-Easy for me (client) to maintain HTML/CSS
-Streamlit demos showcase technical skill without backend setup
-File & Folder Structure
+**Typography:**
+- Primary Font: Roboto (Google Fonts)
+- Secondary Font: Open Sans
+- Base Size: 16px, Line Height: 1.6
 
+**Components:**
+- Responsive navbar with logo ("Seven24" + "Data & AI" tagline)
+- Bootstrap 5 cards with subtle hover effects (shadow, slight lift)
+- Accordion for FAQ and Services
+- CTA buttons: Primary (solid blue) and Outline (blue border)
+- Footer: Dark text, social icons, copyright © 2026 Seven24
+
+**Accessibility:**
+- Alt text on all images
+- ARIA labels on icon buttons
+- Keyboard navigable
+- WCAG AA color contrast
+
+---
+
+## 4. Technology & Architecture Rules
+
+**Tech Stack (non-negotiable):**
+- HTML5 + CSS3 + Vanilla JavaScript (minimal)
+- Bootstrap 5 via CDN
+- Google Fonts (Roboto, Open Sans) + Font Awesome 6
+- Netlify hosting (free tier)
+- Netlify Forms (`data-netlify="true"`)
+- Calendly inline embed
+- Streamlit Community Cloud for demos
+
+**Prohibitions:**
+- ❌ No React, Vue, Angular, or SPA frameworks
+- ❌ No Tailwind, Sass, or CSS preprocessors
+- ❌ No Node.js, npm, Webpack, or build tools
+- ❌ No backend, databases, or APIs
+- ✅ Keep it simple: static files deployable to Netlify instantly
+
+---
+
+## 5. File & Folder Structure (GitHub Repo Layout)
+
+```
 d:\Seven24\
-├── index.html              # Home page
-├── services.html           # 5 services overview
-├── portfolio.html          # Case studies + demo links
-├── about.html              # About me, credentials, process
-├── faq.html                # Common objections, Q&A
-├── contact.html            # Netlify form, email, social
+├── index.html              # Home (hero, services teaser, process, demos)
+├── services.html           # 5 services (accordion/cards)
+├── portfolio.html          # Case studies + 3 Streamlit demo links
+├── about.html              # Bio, skills, values, process
+├── faq.html                # 8 FAQ accordion items
+├── contact.html            # Netlify form + Calendly embed
 ├── css/
-│   └── custom.css          # Custom styles, overrides
+│   └── custom.css          # Brand colors, components, responsive styles
 ├── js/
-│   └── custom.js           # Minimal JS (optional)
-├── images/
-│   └── (headshot, mockups, screenshots, icons)
-├── README.md               # Deployment instructions
-└── CLAUDE.md               # This file (your permanent context)
-Naming conventions:
+│   └── custom.js           # Smooth scroll, navbar highlight (minimal)
+├── images/                 # Placeholder images (Unsplash URLs initially)
+├── README.md               # Deployment guide + project overview
+└── CLAUDE.md               # This file (project context for AI)
+```
 
-Use lowercase, hyphens for multi-word files (e.g., privacy-policy.html if added later)
-Keep folder names simple: css, js, images (no assets/ or public/)
-Important Content & Copy Rules
-Services (exactly these five at MVP):
+---
 
-Python/R Data Cleaning & Analysis – transform messy data into analysis-ready datasets
-Business Intelligence Dashboards – Power BI / Tableau / Python visualizations
-Statistical Modeling & Hypothesis Testing – A/B tests, regression, ANOVA, p-values, confidence intervals
-Predictive Machine Learning Models – sales forecasting, churn prediction, demand planning (emphasis on validation & explainability)
-Workflow Automation & Applied AI – Python scripts, API integrations, simple AI agents
-Each service must:
+## 6. Services & Demos Reference
 
-Open with a benefit-driven headline
-Include a 2–3 sentence description
-List 3–4 bullet points of deliverables or use cases
-End with a soft CTA ("Let's discuss your project")
-Homepage must include:
+**Services (exactly these five):**
+1. **Python/R Data Cleaning & Analysis** – Data wrangling, outlier detection, validation
+2. **Business Intelligence Dashboards** – Power BI, Tableau, Python (Plotly/Streamlit)
+3. **Statistical Modeling & Hypothesis Testing** – A/B tests, regression, p-values, confidence intervals
+4. **Predictive Machine Learning Models** – Forecasting, churn prediction, demand modeling
+5. **Workflow Automation & Applied AI** – Python scripts, API integrations, agentic workflows
 
-Hero section: tagline + ideal client statement + primary CTA
-Services overview (summary of 5 services)
-Social proof placeholder (testimonials or "Trusted by" section, even if minimal)
-Demo preview section with links to Streamlit apps
-Final CTA above footer
-About page must cover:
+**Demos (exactly these three):**
+1. **Predictive Analytics Dashboard** – Sales/demand forecasting with business recommendations (ARIMA, Prophet)
+2. **Business KPI Visualizer** – CSV upload → revenue, churn, growth insights with visualizations
+3. **Inference Engine** – CSV upload → regression analysis, p-values, confidence intervals, plain-language interpretation
 
-Who I am (Statistics Expert, Kenya-based, X: @Datadetective10)
-My philosophy: academic rigor meets business speed, no hype
-Credentials (degrees, tools, methods)
-Process overview (Discovery → Analysis → Delivery → Support)
-Demo Integration Guidelines
-Three Streamlit Apps (hosted on Streamlit Community Cloud):
+**Demo Integration:**
+- **Primary:** Hyperlink buttons opening in new tabs (`target="_blank" rel="noopener noreferrer"`)
+- **Optional:** Iframes with `?embedded=true` (test first; fallback if broken)
+- **Fallback:** Screenshots with "View Live Demo" buttons
 
-Predictive Analytics Dashboard – sales/demand forecasting with interactive sliders
-Business KPI Visualizer – revenue/churn/growth metrics with date range filters
-Inference Engine – run regression/hypothesis tests, see p-values and confidence intervals
-Integration options (choose per page):
+---
 
-Preferred: Hyperlink buttons ("View Live Demo" → opens in new tab)
-Optional: Responsive iframe with ?embedded=true query param (test rendering first)
-Fallback: Static screenshots with link overlay if iframe breaks on mobile
-Placement:
+## 7. Important Copy & Content Guidelines
 
-Portfolio page: Dedicated section per demo with screenshot + description + link
-Services page: Inline "See this in action" links within relevant service cards
-Homepage: Brief teaser section with thumbnails + "Explore Demos" CTA
-Copy for demos:
+**CTAs to use:**
+- "Book Free Call" (links to Calendly)
+- "View Live Demo" (links to Streamlit apps)
+- "Get Started" / "Work With Me" (links to contact form)
 
-Emphasize interactivity: "Adjust parameters and see results in real-time"
-Explain value: "This is how I deliver insights to clients"
-Include disclaimer: "Demo uses synthetic data for privacy"
-Netlify Deployment Checklist
-Before first deploy:
+**Contact details:**
+- Email: ondibahezron@gmail.com
+- WhatsApp: +254 712 200337
+- X (Twitter): @Datadetective10
+- LinkedIn: Hezron Mokaya
+- Calendly: https://calendly.com/ondibahezron/30min
 
- Create GitHub repo, push all files
- Sign up for Netlify (free tier)
- Connect repo to Netlify
- Build settings: Build command: (leave blank), Publish directory: / or .
- Set up contact form with data-netlify="true" attribute
- Test form submission (Netlify captures to dashboard)
-Post-deploy verification:
+**SEO focus:**
+- Keywords: "data analyst Kenya", "Power BI dashboards Nairobi", "statistics consultant", "machine learning Kenya"
+- Every page has unique meta title + description
+- All images have descriptive alt text
 
- All pages load without 404s
- Images render correctly (check paths)
- Forms submit successfully (check Netlify dashboard under Forms)
- Links to Streamlit demos open in new tabs
- Mobile responsiveness confirmed (Chrome DevTools)
- No console errors (check browser inspector)
-Deploy previews:
+---
 
-Enable branch deploys for testing changes before merging to main
-Code Style & Best Practices
-HTML:
+## 8. Netlify & Deployment Checklist
 
-Semantic HTML5 tags: <header>, <nav>, <section>, <article>, <footer>
-Always include alt text on images
-Use ARIA labels where Bootstrap doesn't provide implicit accessibility
-Proper heading hierarchy (<h1> once per page, then <h2>, <h3>, etc.)
-CSS:
+**Deploy steps:**
+1. Push to GitHub: `git push origin main`
+2. Connect repo to Netlify
+3. Build settings: Build command = (blank), Publish directory = `/`
+4. Enable Netlify Forms in dashboard
+5. Test form submission after deploy
+6. Verify Calendly embed loads correctly
+7. Update Streamlit demo URLs with actual app links
 
-Mobile-first: write base styles for small screens, use @media (min-width: ...) for larger
-Prefer Bootstrap utility classes (mt-4, text-center, btn-success) over custom CSS
-Custom CSS only for brand colors, typography overrides, or unique components
-Consistent indentation (2 spaces)
-JavaScript:
+**Post-deploy:**
+- Replace Unsplash placeholder images with actual project screenshots
+- Update profile photo in about.html
+- Add custom domain (optional)
+- Submit to Google Search Console
 
-Keep to absolute minimum (navbar toggle, smooth scroll to anchor links)
-No jQuery (Bootstrap 5 doesn't require it)
-Vanilla JS ES6+ syntax
-Comment any non-obvious logic
-Accessibility:
+---
 
-Color contrast ratio ≥ 4.5:1 for body text
-Focus states visible on all interactive elements
-Form labels properly associated with inputs
-Skip-to-content link for screen readers (optional but nice)
-Performance:
+## 9. Code Style Preferences
 
-Compress images (aim for <200KB per image)
-Use CDN links for Bootstrap, Font Awesome, Google Fonts (faster than self-hosting)
-Minimize custom CSS/JS file sizes
-Lazy load images if page gets image-heavy (future optimization)
-Prohibitions & Constraints
-Never do these things (even if they seem helpful):
+**HTML:**
+- Semantic tags (`<header>`, `<nav>`, `<section>`, `<article>`, `<footer>`)
+- One `<h1>` per page
+- Alt text on all images
+- Consistent indentation (4 spaces)
 
-❌ Introduce React, Next.js, Astro, Tailwind, or any framework requiring a build step
-❌ Add features I didn't request: blog, dark mode, animations (beyond simple hover effects), chatbots, cookie banners (not needed at MVP)
-❌ Suggest paid tools, premium hosting, domain purchases, or email marketing platforms during MVP
-❌ Weaken or remove "Statistics Expert" positioning in favor of generic "data scientist" language
-❌ Generate code with fetch() API calls or assume server-side rendering exists
-❌ Use Lorem Ipsum or placeholder copy—write real, benefit-driven content
-❌ Add services beyond the five listed (clients often ask; politely explain scope is fixed at MVP)
-When I ask for changes:
+**CSS:**
+- Use CSS variables for colors (`:root`)
+- Mobile-first responsive design
+- Bootstrap classes where possible
+- Custom classes in `custom.css` only when needed
 
-Always confirm you understand the change before coding
-Show me the specific lines of code you'll modify (use file paths with line numbers when referencing code: index.html:42)
-Explain trade-offs if my request conflicts with the stack (e.g., "Adding X requires a backend, which isn't part of the static architecture")
-How to Use This File
-For you (Claude) in future conversations:
+**JavaScript:**
+- Keep minimal (smooth scroll, form validation, navbar active state)
+- Vanilla JS only, no jQuery
+- No external libraries beyond Bootstrap bundle
 
-Treat this as your system prompt for the Seven24 project
-When I open a new conversation or return after a break, reference this file to recall project context, brand voice, tech stack, and constraints
-If I ask you to "check CLAUDE.md" or "remember the project rules," reread this file
-If I request something that contradicts this file, politely flag the conflict and ask if I want to override
-For me (the client):
+---
 
-This is my single source of truth—I can update it as the project evolves
-If I forget a design rule or tech choice, I'll refer back here
-When working with other developers or tools, I can share this file for instant context
-Updating this file:
+## 10. Prohibitions (What Never to Do)
 
-I'll tell you explicitly: "Update CLAUDE.md to reflect [change]"
-You'll edit this file and confirm what changed
-Keep it under 1,200 words so it stays scannable
+- ❌ Never suggest adding more pages beyond the 6 core pages until MVP has clients
+- ❌ Never add services beyond the 5 locked services
+- ❌ Never use Lorem Ipsum – always use real, benefit-driven copy
+- ❌ Never mention "BSc" or specific degree credentials
+- ❌ Never use AI hype language ("revolutionary", "game-changing")
+- ❌ Never add backend, databases, or complex frameworks
+- ❌ Never suggest time-consuming features before validating with real traffic
+
+---
+
+## 11. How to Use This File
+
+**For me (project owner):**
+When starting a new conversation with Claude Code about this project, reference or paste this file to provide full context. This ensures consistency across sessions and prevents scope creep.
+
+**For Claude Code:**
+Read this file completely before suggesting edits, new features, or copy changes. Prioritize simplicity, credibility, and benefit-focused language. When in doubt, ask before adding complexity.
+
+**Updates:**
+Keep this file synchronized with major project changes (new demos, pricing updates, tech stack changes). Treat it as the single source of truth.
+
+---
+
+**Live Site:** https://mokaya.netlify.app/
+**GitHub Repo:** https://github.com/ondibahezron-glitch/24-Seven
+**Last Updated:** 2026-01-28

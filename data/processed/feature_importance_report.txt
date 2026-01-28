@@ -1,0 +1,247 @@
+======================================================================
+FEATURE ENGINEERING REPORT - Seven24 Churn Prediction
+======================================================================
+Generated: 2026-01-28 06:58:43
+Training Records: 9580
+Overall Churn Rate: 27.0%
+
+----------------------------------------------------------------------
+ENGINEERED FEATURES
+----------------------------------------------------------------------
+
+FEATURE: tenure_bin
+  Formula: 0 if <6mo, 1 if 6-12mo, 2 if 13-24mo, 3 if >24mo
+  Business Meaning: Customer lifecycle stage (ordinal)
+  Expected Churn Impact: Early stages (+25% for <6mo) have higher churn
+  Univariate Churn Rates:
+    tenure_bin=0: 39.6% (n=2766)
+    tenure_bin=1: 27.7% (n=2260)
+    tenure_bin=2: 22.3% (n=2209)
+    tenure_bin=3: 15.9% (n=2345)
+
+FEATURE: is_new_customer
+  Formula: 1 if tenure_months < 6 else 0
+  Business Meaning: Identifies customers in high-risk early lifecycle stage
+  Expected Churn Impact: +25% churn probability
+  Univariate Churn Rates:
+    is_new_customer=0: 21.9% (n=6814)
+    is_new_customer=1: 39.6% (n=2766)
+
+FEATURE: is_established
+  Formula: 1 if tenure_months > 24 else 0
+  Business Meaning: Long-term loyal customers with lower churn risk
+  Expected Churn Impact: -8% churn probability
+  Univariate Churn Rates:
+    is_established=0: 30.6% (n=7235)
+    is_established=1: 15.9% (n=2345)
+
+FEATURE: tenure_log
+  Formula: log1p(tenure_months)
+  Business Meaning: Compressed tenure for linear models
+  Expected Churn Impact: Captures non-linear tenure effect
+  Mean: 2.408
+  Correlation with Churn: -0.190
+
+FEATURE: avg_monthly_revenue
+  Formula: total_charges / max(tenure_months, 1)
+  Business Meaning: Normalized customer value per month
+  Expected Churn Impact: Avoids tenure correlation; shows true value
+  Mean: 5096.991
+  Correlation with Churn: 0.005
+
+FEATURE: is_high_value
+  Formula: 1 if monthly_charges > 75th percentile
+  Business Meaning: High-paying customer segment
+  Expected Churn Impact: +12% churn risk (price sensitivity)
+  Univariate Churn Rates:
+    is_high_value=0: 24.7% (n=7185)
+    is_high_value=1: 33.9% (n=2395)
+
+FEATURE: price_sensitivity
+  Formula: monthly_charges / service_type_median
+  Business Meaning: Relative cost burden vs tier peers (>1.2 = overpaying)
+  Expected Churn Impact: Higher values indicate pricing dissatisfaction
+  Mean: 1.036
+  Correlation with Churn: 0.033
+
+FEATURE: monthly_charges_log
+  Formula: log(monthly_charges)
+  Business Meaning: Compressed charges for linear models
+  Expected Churn Impact: Reduces outlier impact
+  Mean: 8.359
+  Correlation with Churn: 0.062
+
+FEATURE: support_intensity
+  Formula: support_calls / max(tenure_months, 1)
+  Business Meaning: Support load per month of tenure
+  Expected Churn Impact: +3% per call (max +20%)
+  Mean: 0.541
+  Correlation with Churn: 0.159
+
+FEATURE: is_heavy_support
+  Formula: 1 if support_calls > 5
+  Business Meaning: Customer with high support burden
+  Expected Churn Impact: Cumulative +15-20% churn risk
+  Univariate Churn Rates:
+    is_heavy_support=0: 26.7% (n=9180)
+    is_heavy_support=1: 33.2% (n=400)
+
+FEATURE: late_payment_flag
+  Formula: 1 if late_payment_count > 0
+  Business Meaning: Any payment issues indicate risk
+  Expected Churn Impact: +4% per late payment
+  Univariate Churn Rates:
+    late_payment_flag=0: 23.7% (n=2872)
+    late_payment_flag=1: 28.4% (n=6708)
+
+FEATURE: financial_stress
+  Formula: 0 if 0 late, 1 if 1-2 late, 2 if 3+ late
+  Business Meaning: Graduated financial stress indicator
+  Expected Churn Impact: Higher values = higher churn risk
+  Univariate Churn Rates:
+    financial_stress=0: 23.7% (n=2872)
+    financial_stress=1: 26.9% (n=5475)
+    financial_stress=2: 35.1% (n=1233)
+
+FEATURE: usage_efficiency
+  Formula: data_usage_gb / (num_services + 1)
+  Business Meaning: Service utilization per subscribed service
+  Expected Churn Impact: Low values indicate underutilization
+  Mean: 37.577
+  Correlation with Churn: 0.035
+
+FEATURE: usage_tier_ratio
+  Formula: data_usage_gb / service_type_median_usage
+  Business Meaning: Engagement relative to tier (<0.5 = disengaged)
+  Expected Churn Impact: Low engagement increases churn risk
+  Mean: 1.112
+  Correlation with Churn: -0.001
+
+FEATURE: autopay_binary
+  Formula: 1 if autopay_enabled == "Yes" else 0
+  Business Meaning: Payment convenience indicator
+  Expected Churn Impact: -8% churn (convenience reduces friction)
+  Univariate Churn Rates:
+    autopay_binary=0: 30.5% (n=3766)
+    autopay_binary=1: 24.7% (n=5814)
+
+FEATURE: referral_flag
+  Formula: 1 if referral_count > 0
+  Business Meaning: Customer who has referred others (satisfied)
+  Expected Churn Impact: -5% per referral (max -15%)
+  Univariate Churn Rates:
+    referral_flag=0: 30.1% (n=4273)
+    referral_flag=1: 24.5% (n=5307)
+
+FEATURE: loyalty_score
+  Formula: referral_count + is_established + autopay_binary
+  Business Meaning: Composite loyalty indicator (0-3+ scale)
+  Expected Churn Impact: Higher score = lower churn risk
+  Univariate Churn Rates:
+    loyalty_score=0: 36.5% (n=1262)
+    loyalty_score=1: 31.5% (n=3413)
+    loyalty_score=2: 24.4% (n=2970)
+    loyalty_score=3: 18.1% (n=1408)
+    loyalty_score=4: 14.6% (n=417)
+    loyalty_score=5: 8.3% (n=96)
+    loyalty_score=6: 8.3% (n=12)
+    loyalty_score=7: 0.0% (n=2)
+
+FEATURE: contract_risk
+  Formula: 2 if MTM, 1 if 1-Year, 0 if 2-Year
+  Business Meaning: Contract flexibility (higher = more risk)
+  Expected Churn Impact: MTM +20%, Two Year -15%
+  Univariate Churn Rates:
+    contract_risk=0: 10.8% (n=1469)
+    contract_risk=1: 20.3% (n=2934)
+    contract_risk=2: 35.4% (n=5177)
+
+FEATURE: contract_tenure_mismatch
+  Formula: 1 if MTM AND tenure > 12 months
+  Business Meaning: Long-term customer without commitment
+  Expected Churn Impact: Risk or upsell opportunity
+  Univariate Churn Rates:
+    contract_tenure_mismatch=0: 26.9% (n=7118)
+    contract_tenure_mismatch=1: 27.2% (n=2462)
+
+FEATURE: payment_friction
+  Formula: 1 if Cash AND autopay=No
+  Business Meaning: Manual payment creates friction points
+  Expected Churn Impact: +8% churn risk from payment hassle
+  Univariate Churn Rates:
+    payment_friction=0: 26.8% (n=9265)
+    payment_friction=1: 31.7% (n=315)
+
+FEATURE: is_mpesa
+  Formula: 1 if payment_method == "M-Pesa"
+  Business Meaning: Kenya mobile money (most convenient)
+  Expected Churn Impact: Convenient payment reduces churn
+  Univariate Churn Rates:
+    is_mpesa=0: 27.4% (n=5055)
+    is_mpesa=1: 26.5% (n=4525)
+
+FEATURE: high_value_mtm
+  Formula: is_high_value AND contract_type == MTM
+  Business Meaning: High-paying customer with no lock-in
+  Expected Churn Impact: Compounded risk: valuable + flight risk
+  Univariate Churn Rates:
+    high_value_mtm=0: 24.6% (n=8297)
+    high_value_mtm=1: 42.7% (n=1283)
+
+FEATURE: new_no_autopay
+  Formula: is_new_customer AND autopay=No
+  Business Meaning: New customer with manual payment
+  Expected Churn Impact: Compounded early-stage risk
+  Univariate Churn Rates:
+    new_no_autopay=0: 24.8% (n=8505)
+    new_no_autopay=1: 44.2% (n=1075)
+
+FEATURE: support_late_combo
+  Formula: support_calls > 3 AND late_payments > 1
+  Business Meaning: Multiple dissatisfaction signals present
+  Expected Churn Impact: Strong churn predictor
+  Univariate Churn Rates:
+    support_late_combo=0: 26.0% (n=8782)
+    support_late_combo=1: 37.8% (n=798)
+
+FEATURE: premium_low_usage
+  Formula: service_type == Premium AND usage < 25th pctl
+  Business Meaning: Paying for premium but not using it
+  Expected Churn Impact: Value perception mismatch
+  Univariate Churn Rates:
+    premium_low_usage=0: 27.0% (n=9570)
+    premium_low_usage=1: 40.0% (n=10)
+
+FEATURE: bundled_loyal
+  Formula: num_services >= 3 AND tenure > 12
+  Business Meaning: Multi-service long-term customer
+  Expected Churn Impact: Strong retention signal
+  Univariate Churn Rates:
+    bundled_loyal=0: 27.9% (n=8725)
+    bundled_loyal=1: 18.2% (n=855)
+
+----------------------------------------------------------------------
+MULTICOLLINEARITY ANALYSIS
+----------------------------------------------------------------------
+
+Feature pairs with |correlation| > 0.85:
+  tenure_bin <-> tenure_log: 0.923
+  monthly_charges_log <-> service_encoded: 0.911
+  late_payment_flag <-> financial_stress: 0.858
+
+----------------------------------------------------------------------
+FEATURE SUMMARY
+----------------------------------------------------------------------
+Total Engineered Features: 33
+Model-Ready Features: 35
+
+Feature Categories:
+  - Tenure-based: 4
+  - Financial/Value: 4
+  - Behavioral Risk: 6
+  - Engagement/Loyalty: 3
+  - Contract/Payment: 4
+  - Interaction: 5
+  - Encoded Categoricals: 8
+
+======================================================================

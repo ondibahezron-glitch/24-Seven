@@ -1,0 +1,138 @@
+{
+  "start_time": "2026-01-28T06:20:15.800009",
+  "original_rows": 12000,
+  "final_rows": 11976,
+  "operations": [
+    {
+      "operation": "Remove Duplicates",
+      "timestamp": "2026-01-28T06:20:15.847917",
+      "duplicates_removed": 24,
+      "rows_after": 11976,
+      "justification": "Primary key constraint; duplicates violate independence assumption"
+    },
+    {
+      "operation": "Fix Negative Tenure",
+      "timestamp": "2026-01-28T06:20:15.849394",
+      "records_fixed": 36,
+      "action": "Set to 0",
+      "justification": "Impossible value; floor correction to minimum possible"
+    },
+    {
+      "operation": "Fix Negative Support Calls",
+      "timestamp": "2026-01-28T06:20:15.850530",
+      "records_fixed": 60,
+      "action": "Set to 0",
+      "justification": "Minimum possible support calls is 0"
+    },
+    {
+      "operation": "Flag Invalid Total Charges",
+      "timestamp": "2026-01-28T06:20:15.852311",
+      "records_flagged": 1043,
+      "action": "Created charges_anomaly_flag column",
+      "justification": "May contain predictive signal; flagged for model consideration"
+    },
+    {
+      "operation": "Standardize Contract Type",
+      "timestamp": "2026-01-28T06:20:15.857821",
+      "original_variants": 15,
+      "final_variants": 3,
+      "unmapped_values": 0
+    },
+    {
+      "operation": "Standardize Payment Method",
+      "timestamp": "2026-01-28T06:20:15.863865",
+      "original_variants": 22,
+      "final_variants": 5
+    },
+    {
+      "operation": "Standardize Autopay Enabled",
+      "timestamp": "2026-01-28T06:20:15.868176",
+      "original_variants": 12,
+      "final_variants": 2,
+      "unmapped_values": 0
+    },
+    {
+      "operation": "Impute Monthly Charges",
+      "timestamp": "2026-01-28T06:20:15.881012",
+      "records_imputed": 720,
+      "method": "Median by service_type",
+      "justification": "Right-skewed distribution; stratified by service tier"
+    },
+    {
+      "operation": "Impute Data Usage",
+      "timestamp": "2026-01-28T06:20:15.888945",
+      "records_imputed": 479,
+      "method": "Median by service_type",
+      "justification": "Usage correlates with service tier"
+    },
+    {
+      "operation": "Impute Payment Method",
+      "timestamp": "2026-01-28T06:20:15.892662",
+      "records_imputed": 448,
+      "method": "Mode (M-Pesa)",
+      "justification": "Categorical variable; mode preserves distribution"
+    },
+    {
+      "operation": "Impute Location Type",
+      "timestamp": "2026-01-28T06:20:15.895307",
+      "records_imputed": 180,
+      "method": "Mode (Urban)",
+      "justification": "Low missing rate; mode imputation minimizes bias"
+    },
+    {
+      "operation": "Winsorize monthly_charges",
+      "timestamp": "2026-01-28T06:20:15.904506",
+      "upper_outliers_capped": 358,
+      "lower_outliers_capped": 0,
+      "original_range": "1502.73 - 24949.29",
+      "new_range": "1502.73 - 11694.79",
+      "upper_bound": 11694.79,
+      "method": "IQR winsorization (cap at Q3 + 1.5*IQR)",
+      "justification": "IQR robust to skewed data; capping preserves records"
+    },
+    {
+      "operation": "Winsorize data_usage_gb",
+      "timestamp": "2026-01-28T06:20:15.909462",
+      "upper_outliers_capped": 556,
+      "lower_outliers_capped": 0,
+      "original_range": "0.45 - 500.00",
+      "new_range": "0.45 - 209.81",
+      "upper_bound": 209.81,
+      "method": "IQR winsorization (cap at Q3 + 1.5*IQR)",
+      "justification": "IQR robust to skewed data; capping preserves records"
+    },
+    {
+      "operation": "Train/Test Split",
+      "timestamp": "2026-01-28T06:20:22.294814",
+      "train_size": 9580,
+      "test_size": 2396,
+      "test_ratio": 0.2,
+      "stratified_by": "churn",
+      "train_churn_rate": "27.00%",
+      "test_churn_rate": "27.00%"
+    },
+    {
+      "operation": "Feature Scaling",
+      "timestamp": "2026-01-28T06:20:22.311587",
+      "columns_scaled": [
+        "tenure_months",
+        "monthly_charges",
+        "total_charges",
+        "num_services",
+        "data_usage_gb",
+        "support_calls",
+        "late_payment_count",
+        "referral_count"
+      ],
+      "method": "StandardScaler (fit on train only)",
+      "scaler_saved": "D:\\Seven24\\data\\processed\\scaler.joblib",
+      "justification": "Prevents data leakage; scaler fitted on train data only"
+    }
+  ],
+  "warnings": [],
+  "train_rows": 9580,
+  "test_rows": 2396,
+  "validation_passed": true,
+  "churn_rate": 0.27,
+  "end_time": "2026-01-28T06:20:22.529708"
+}

@@ -1,0 +1,14 @@
+{
+  "monthly_charges_p75": 6203.735000000001,
+  "data_usage_p25": 28.29,
+  "service_type_median_charges": {
+    "Basic": 2258.87,
+    "Premium": 9605.485,
+    "Standard": 5009.37
+  },
+  "service_type_median_usage": {
+    "Basic": 25.49,
+    "Premium": 147.315,
+    "Standard": 67.255
+  }
+}

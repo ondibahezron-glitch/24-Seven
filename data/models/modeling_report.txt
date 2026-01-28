@@ -1,0 +1,74 @@
+======================================================================
+CHURN PREDICTION MODELING REPORT
+Seven24 - Statistics Expert-Powered Analytics
+======================================================================
+Generated: 2026-01-28 07:26:22
+
+----------------------------------------------------------------------
+DATA SUMMARY
+----------------------------------------------------------------------
+Training samples: 9580
+Test samples: 2396
+Churn rate (train): 27.0%
+Churn rate (test): 27.0%
+Class imbalance ratio: 2.70:1
+
+----------------------------------------------------------------------
+MODEL RESULTS (TEST SET)
+----------------------------------------------------------------------
+
+LOGISTIC REGRESSION:
+  roc_auc: 0.7199
+  precision: 0.4052
+  recall: 0.6739
+  f1: 0.5061
+
+XGBOOST:
+  roc_auc: 0.7217
+  precision: 0.4086
+  recall: 0.7326
+  f1: 0.5246
+
+----------------------------------------------------------------------
+CROSS-VALIDATION RESULTS (5-FOLD)
+----------------------------------------------------------------------
+
+LOGISTIC REGRESSION:
+  Mean ROC-AUC: 0.7130 (+/- 0.0129)
+  Fold scores: ['0.7035', '0.7149', '0.7079', '0.7212', '0.7175']
+
+XGBOOST:
+  Mean ROC-AUC: 0.7099 (+/- 0.0149)
+  Fold scores: ['0.6988', '0.7126', '0.7064', '0.7215', '0.7104']
+
+----------------------------------------------------------------------
+TOP FEATURES (LOGISTIC REGRESSION COEFFICIENTS)
+----------------------------------------------------------------------
+  contract_risk: +0.5625 (increases churn odds by 75.5%)
+  loyalty_score: -0.2555 (decreases churn odds by 22.5%)
+  is_high_value: +0.2370 (increases churn odds by 26.7%)
+  is_new_customer: +0.2085 (increases churn odds by 23.2%)
+  tenure_log: -0.1776 (decreases churn odds by 16.3%)
+  financial_stress: +0.1503 (increases churn odds by 16.2%)
+  support_intensity: +0.1283 (increases churn odds by 13.7%)
+  charges_anomaly_flag: -0.1138 (decreases churn odds by 10.8%)
+  support_late_combo: +0.1021 (increases churn odds by 10.8%)
+  avg_monthly_revenue: -0.0835 (decreases churn odds by 8.0%)
+
+----------------------------------------------------------------------
+INTERPRETABILITY VS PERFORMANCE
+----------------------------------------------------------------------
+
+Logistic Regression:
+  - Interpretability: HIGH (direct coefficient interpretation)
+  - Performance: GOOD baseline
+  - Use case: Stakeholder communication, regulatory compliance
+
+XGBoost:
+  - Interpretability: MEDIUM (requires SHAP)
+  - Performance: HIGHER
+  - Use case: Production predictions with SHAP explanations
+
+======================================================================
+END OF REPORT
+======================================================================

@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Streamlit secrets (if using)
+.streamlit/secrets.toml
+
+# Large data files (not needed for deployment)
+data/processed/*.csv
+data/processed/*.png
+!data/processed/feature_stats.json
+
+# Development scripts (not needed for production)
+src/
+
+# Jupyter notebooks
+*.ipynb
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

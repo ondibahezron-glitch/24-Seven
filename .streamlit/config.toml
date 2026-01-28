@@ -1,0 +1,17 @@
+# Seven24 Churn Analytics - Streamlit Configuration
+# Theme aligned with Seven24 brand identity
+
+[theme]
+primaryColor = "#007BFF"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F8F9FA"
+textColor = "#212529"
+font = "sans serif"
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false

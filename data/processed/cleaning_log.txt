@@ -1,0 +1,45 @@
+======================================================================
+DATA CLEANING LOG
+======================================================================
+
+[2026-01-28 06:20:15] [INFO] Loading data from D:\Seven24\data\raw\customer_churn_raw.csv
+[2026-01-28 06:20:15] [INFO] Loaded 12,000 records with 15 columns
+[2026-01-28 06:20:15] [INFO] Removing duplicate customer_id records...
+[2026-01-28 06:20:15] [INFO] Remove Duplicates: {'duplicates_removed': np.int64(24), 'rows_after': 11976, 'justification': 'Primary key constraint; duplicates violate independence assumption'}
+[2026-01-28 06:20:15] [INFO] Handling invalid records...
+[2026-01-28 06:20:15] [INFO] Fix Negative Tenure: {'records_fixed': np.int64(36), 'action': 'Set to 0', 'justification': 'Impossible value; floor correction to minimum possible'}
+[2026-01-28 06:20:15] [INFO] Fix Negative Support Calls: {'records_fixed': np.int64(60), 'action': 'Set to 0', 'justification': 'Minimum possible support calls is 0'}
+[2026-01-28 06:20:15] [INFO] Flag Invalid Total Charges: {'records_flagged': np.int64(1043), 'action': 'Created charges_anomaly_flag column', 'justification': 'May contain predictive signal; flagged for model consideration'}
+[2026-01-28 06:20:15] [INFO] Standardizing categorical columns...
+[2026-01-28 06:20:15] [INFO] Standardize Contract Type: {'original_variants': 15, 'final_variants': 3, 'unmapped_values': np.int64(0)}
+[2026-01-28 06:20:15] [INFO] Standardize Payment Method: {'original_variants': 22, 'final_variants': 5}
+[2026-01-28 06:20:15] [INFO] Standardize Autopay Enabled: {'original_variants': 12, 'final_variants': 2, 'unmapped_values': np.int64(0)}
+[2026-01-28 06:20:15] [INFO] Handling missing values...
+[2026-01-28 06:20:15] [INFO] Impute Monthly Charges: {'records_imputed': np.int64(720), 'method': 'Median by service_type', 'justification': 'Right-skewed distribution; stratified by service tier'}
+[2026-01-28 06:20:15] [INFO] Impute Data Usage: {'records_imputed': np.int64(479), 'method': 'Median by service_type', 'justification': 'Usage correlates with service tier'}
+[2026-01-28 06:20:15] [INFO] Impute Payment Method: {'records_imputed': np.int64(448), 'method': 'Mode (M-Pesa)', 'justification': 'Categorical variable; mode preserves distribution'}
+[2026-01-28 06:20:15] [INFO] Impute Location Type: {'records_imputed': np.int64(180), 'method': 'Mode (Urban)', 'justification': 'Low missing rate; mode imputation minimizes bias'}
+[2026-01-28 06:20:15] [INFO] Detecting and handling outliers...
+[2026-01-28 06:20:15] [INFO] Winsorize monthly_charges: {'upper_outliers_capped': np.int64(358), 'lower_outliers_capped': np.int64(0), 'original_range': '1502.73 - 24949.29', 'new_range': '1502.73 - 11694.79', 'upper_bound': np.float64(11694.79), 'method': 'IQR winsorization (cap at Q3 + 1.5*IQR)', 'justification': 'IQR robust to skewed data; capping preserves records'}
+[2026-01-28 06:20:15] [INFO] Winsorize data_usage_gb: {'upper_outliers_capped': np.int64(556), 'lower_outliers_capped': np.int64(0), 'original_range': '0.45 - 500.00', 'new_range': '0.45 - 209.81', 'upper_bound': np.float64(209.81), 'method': 'IQR winsorization (cap at Q3 + 1.5*IQR)', 'justification': 'IQR robust to skewed data; capping preserves records'}
+[2026-01-28 06:20:15] [INFO] Generating before/after visualizations...
+[2026-01-28 06:20:18] [INFO] Saved: D:\Seven24\data\processed\numeric_distributions_comparison.png
+[2026-01-28 06:20:19] [INFO] Saved: D:\Seven24\data\processed\missing_values_comparison.png
+[2026-01-28 06:20:21] [INFO] Saved: D:\Seven24\data\processed\categorical_standardization.png
+[2026-01-28 06:20:22] [INFO] Saved: D:\Seven24\data\processed\outlier_treatment_comparison.png
+[2026-01-28 06:20:22] [INFO] Validating cleaned data...
+[2026-01-28 06:20:22] [INFO] Validation: No missing values - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: No duplicate customer_ids - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: Contract types match expected set - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: Payment methods match expected set - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: Autopay values match expected set - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: No negative tenure values - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: No negative support_calls - PASSED
+[2026-01-28 06:20:22] [INFO] Validation: Churn rate 27.00% within expected range - PASSED
+[2026-01-28 06:20:22] [INFO] ALL VALIDATIONS PASSED
+[2026-01-28 06:20:22] [INFO] Saved cleaned dataset: D:\Seven24\data\processed\customer_churn_cleaned.csv
+[2026-01-28 06:20:22] [INFO] Scaling numeric features with train/test split...
+[2026-01-28 06:20:22] [INFO] Train/Test Split: {'train_size': 9580, 'test_size': 2396, 'test_ratio': 0.2, 'stratified_by': 'churn', 'train_churn_rate': '27.00%', 'test_churn_rate': '27.00%'}
+[2026-01-28 06:20:22] [INFO] Feature Scaling: {'columns_scaled': ['tenure_months', 'monthly_charges', 'total_charges', 'num_services', 'data_usage_gb', 'support_calls', 'late_payment_count', 'referral_count'], 'method': 'StandardScaler (fit on train only)', 'scaler_saved': 'D:\\Seven24\\data\\processed\\scaler.joblib', 'justification': 'Prevents data leakage; scaler fitted on train data only'}
+[2026-01-28 06:20:22] [INFO] Saved training set: D:\Seven24\data\processed\customer_churn_train.csv (9,580 records)
+[2026-01-28 06:20:22] [INFO] Saved test set: D:\Seven24\data\processed\customer_churn_test.csv (2,396 records)
