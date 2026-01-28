@@ -6,7 +6,7 @@ Professional portfolio and lead-generation website for Seven24, a Statistics Exp
 
 ## 🚀 Live Site
 
-- **Production URL:** [To be deployed on Netlify]
+- **Production URL:** [https://mokaya.netlify.app/](https://mokaya.netlify.app/)
 - **Demo Streamlit Apps:** Replace placeholder URLs in `portfolio.html` with actual Streamlit app URLs
 
 ## 📋 Project Overview
