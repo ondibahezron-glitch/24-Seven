@@ -1,6 +1,6 @@
 # Customer Churn Prediction System
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mokaya.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://seven24.streamlit.app)
 
 A production-ready machine learning system for predicting customer churn, built with statistical rigor and business interpretability in mind. This project demonstrates end-to-end data science capabilities: from handling messy real-world data to deploying an interactive analytics dashboard.
 
@@ -8,7 +8,7 @@ A production-ready machine learning system for predicting customer churn, built 
 
 | Resource | Link |
 |----------|------|
-| **Live Demo** | [Streamlit App](https://mokaya.streamlit.app) |
+| **Live Demo** | [Streamlit App](https://seven24.streamlit.app) |
 | **Portfolio** | [mokaya.netlify.app](https://mokaya.netlify.app) |
 | **Author** | [Hezron Mokaya](https://linkedin.com/in/hezron-mokaya) |
 
